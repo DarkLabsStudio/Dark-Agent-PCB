@@ -7,6 +7,17 @@ schematic capture, PCB layout, BOM generation, Gerber and drill export, pick-and
 data, and 3D previews. It is deliberately small enough to inspect and strict enough to
 trust.
 
+## Companion repository
+
+This repository covers electronics. Its mechanical companion is
+**[Dark-Agent-CAD](https://github.com/DarkLabsStudio/Dark-Agent-CAD)** — an agent-ready
+build123d workspace with watertight-geometry verification, STEP export, and headless
+VTK previews.
+
+Use **Dark-Agent-PCB** for the board and **Dark-Agent-CAD** for the enclosure, brackets,
+cooling blocks, fixtures, or mounting interfaces around it. The two repositories share
+the same agent-first, verify-before-report workflow.
+
 ![Dark Agent PCB LED indicator, isometric preview](examples/led_indicator/previews/iso.png)
 
 ## What is included

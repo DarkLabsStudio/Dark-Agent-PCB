@@ -4,6 +4,11 @@ This file is the operational contract for agents working in this repository. Rea
 in full before changing any project. The goal is a verified KiCad 10 board with a
 schematic, PCB, BOM, Gerbers, drill files, position data, and a visible 3D preview.
 
+This repository covers electronics. The companion mechanical repository is
+**[Dark-Agent-CAD](https://github.com/DarkLabsStudio/Dark-Agent-CAD)**: an agent-ready
+build123d workspace for parts, enclosures, STEP models, and VTK previews. Use the two
+together when a board and its mechanical surroundings need to fit.
+
 ## 1. Non-negotiable rules
 
 1. **Clone first.** Work from a clone of
