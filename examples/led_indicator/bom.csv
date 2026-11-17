@@ -1,0 +1,4 @@
+"Refs","Value","Footprint","MPN","Qty"
+"D1","Red LED","LED_SMD:LED_0805_2012Metric","LTST-C171KRKT","1"
+"J1","5V input","Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical","PZ254V-11-02P","1"
+"R1","1k","Resistor_SMD:R_0805_2012Metric","RC0805FR-071KL","1"

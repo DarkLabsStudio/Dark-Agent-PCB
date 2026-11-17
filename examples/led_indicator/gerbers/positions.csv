@@ -1,0 +1,4 @@
+Ref,Val,Package,PosX,PosY,Rot,Side
+"D1","Red LED","LED_0805_2012Metric",28.000000,-12.700000,180.000000,top
+"J1","5V input","PinHeader_1x02_P2.54mm_Vertical",6.350000,-12.700000,0.000000,top
+"R1","1k","R_0805_2012Metric",18.000000,-12.700000,0.000000,top
