@@ -69,16 +69,32 @@ def run(
     *,
     verbose: bool = False,
     cwd: Path | None = None,
+    timeout: float = 180.0,
 ) -> subprocess.CompletedProcess[str]:
     log.append("\n$ " + " ".join(str(part) for part in command))
-    result = subprocess.run(
-        [str(part) for part in command],
-        cwd=str(cwd) if cwd else None,
-        capture_output=True,
-        text=True,
-        encoding="utf-8",
-        errors="replace",
-    )
+    try:
+        result = subprocess.run(
+            [str(part) for part in command],
+            cwd=str(cwd) if cwd else None,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=timeout,
+        )
+    except subprocess.TimeoutExpired as exc:
+        stdout = exc.stdout or ""
+        stderr = exc.stderr or ""
+        if isinstance(stdout, bytes):
+            stdout = stdout.decode("utf-8", errors="replace")
+        if isinstance(stderr, bytes):
+            stderr = stderr.decode("utf-8", errors="replace")
+        stderr += f"\nTimed out after {timeout:.0f} s"
+        log.append(stdout)
+        log.append(stderr)
+        return subprocess.CompletedProcess(
+            [str(part) for part in command], 124, stdout, stderr
+        )
     if result.stdout:
         log.append(result.stdout)
     if result.stderr:
@@ -420,6 +436,7 @@ def main() -> int:
                 ],
                 log,
                 verbose=False,
+                timeout=300,
             )
             preview_paths[label] = preview
             if render.returncode != 0 or not preview.is_file() or preview.stat().st_size < 1000:
